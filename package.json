@@ -30,7 +30,7 @@
     "dev": "tsx src/cli/main.ts",
     "demo:prepare": "node scripts/prepare-demo.mjs",
     "demo:run": "bash demo/run-demo.sh",
-    "test": "npm run build && node --test dist/test/**/*.test.js",
+    "test": "npm run build && node --test dist/test/*.test.js",
     "validate:examples": "npm run build && node dist/src/cli/main.js validate --rules presets/baseline.yml",
     "site:serve": "python3 -m http.server 4173 --directory site"
   },
