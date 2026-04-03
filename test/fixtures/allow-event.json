@@ -1,0 +1,6 @@
+{
+  "kind": "tool_call",
+  "source": "claude-code",
+  "toolName": "bash",
+  "command": "ls -la"
+}

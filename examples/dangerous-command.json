@@ -1,0 +1,9 @@
+{
+  "kind": "tool_call",
+  "source": "claude-code",
+  "toolName": "bash",
+  "command": "rm -rf /",
+  "metadata": {
+    "cwd": "/tmp/demo"
+  }
+}

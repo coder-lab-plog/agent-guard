@@ -1,0 +1,52 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">agent-guard banner</title>
+  <desc id="desc">Editorial banner for the agent-guard repository showing policy decisions around coding agents.</desc>
+  <rect width="1280" height="640" fill="#F4EAD7"/>
+  <rect x="32" y="32" width="1216" height="576" rx="28" fill="#131313"/>
+  <path d="M64 192C236 88 350 80 490 108C623 135 714 190 832 189C954 187 1035 130 1216 64V320C1048 406 946 446 835 446C711 446 639 382 505 353C364 322 240 342 64 432V192Z" fill="#EF5A29"/>
+  <path d="M64 366C220 300 349 286 486 309C623 332 709 396 829 397C955 398 1068 335 1216 250V576H64V366Z" fill="#0F8B6D" fill-opacity="0.18"/>
+  <g opacity="0.16">
+    <path d="M152 92V548" stroke="#F4EAD7"/>
+    <path d="M304 92V548" stroke="#F4EAD7"/>
+    <path d="M456 92V548" stroke="#F4EAD7"/>
+    <path d="M608 92V548" stroke="#F4EAD7"/>
+    <path d="M760 92V548" stroke="#F4EAD7"/>
+    <path d="M912 92V548" stroke="#F4EAD7"/>
+    <path d="M1064 92V548" stroke="#F4EAD7"/>
+    <path d="M1216 92V548" stroke="#F4EAD7"/>
+    <path d="M92 160H1188" stroke="#F4EAD7"/>
+    <path d="M92 288H1188" stroke="#F4EAD7"/>
+    <path d="M92 416H1188" stroke="#F4EAD7"/>
+    <path d="M92 544H1188" stroke="#F4EAD7"/>
+  </g>
+  <rect x="96" y="96" width="350" height="54" fill="#F4EAD7"/>
+  <text x="120" y="133" fill="#131313" font-family="'IBM Plex Mono', monospace" font-size="24" font-weight="700" letter-spacing="5">AGENT-GUARD</text>
+  <text x="96" y="230" fill="#F4EAD7" font-family="'Trebuchet MS', 'Gill Sans', sans-serif" font-size="102" font-weight="700" letter-spacing="-4">
+    POLICY FOR
+  </text>
+  <text x="96" y="322" fill="#F4EAD7" font-family="'Trebuchet MS', 'Gill Sans', sans-serif" font-size="102" font-weight="700" letter-spacing="-4">
+    CODING AGENTS
+  </text>
+  <text x="100" y="396" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="26" opacity="0.88">
+    LET MODELS GENERATE. LET RULES DECIDE.
+  </text>
+  <g transform="translate(890 118)">
+    <rect width="276" height="86" fill="#F4EAD7"/>
+    <text x="24" y="35" fill="#131313" font-family="'IBM Plex Mono', monospace" font-size="18">SOURCE</text>
+    <text x="24" y="62" fill="#131313" font-family="'IBM Plex Mono', monospace" font-size="22" font-weight="700">claude-code :: bash</text>
+  </g>
+  <g transform="translate(890 220)">
+    <rect width="276" height="112" fill="#181818" stroke="#F4EAD7" stroke-opacity="0.2"/>
+    <text x="22" y="38" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="18">EVENT</text>
+    <text x="22" y="72" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="18">curl ... | bash</text>
+    <rect x="22" y="82" width="94" height="20" fill="#EF5A29"/>
+    <text x="32" y="97" fill="#FFF4EF" font-family="'IBM Plex Mono', monospace" font-size="13" font-weight="700">BLOCK</text>
+  </g>
+  <g transform="translate(890 352)">
+    <rect width="276" height="148" fill="#181818" stroke="#F4EAD7" stroke-opacity="0.2"/>
+    <text x="22" y="40" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="18">MATCHED RULES</text>
+    <text x="22" y="74" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="16">block-dangerous-shell</text>
+    <text x="22" y="104" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="16">warn-sensitive-files</text>
+    <text x="22" y="128" fill="#F4EAD7" font-family="'IBM Plex Mono', monospace" font-size="16" opacity="0.54">...</text>
+  </g>
+</svg>

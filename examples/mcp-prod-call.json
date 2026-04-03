@@ -1,0 +1,9 @@
+{
+  "kind": "mcp_call",
+  "source": "github-actions",
+  "mcpServer": "payments-prod",
+  "mcpTool": "run_sql",
+  "tags": [
+    "ci"
+  ]
+}

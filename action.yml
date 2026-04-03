@@ -1,0 +1,28 @@
+name: "agent-guard"
+description: "Published JavaScript action for enforcing allow, warn, and block policy decisions on coding-agent events."
+inputs:
+  rules:
+    description: "Path to a YAML or JSON rule file, or a directory containing rule files."
+    required: true
+  input:
+    description: "Path to the normalized agent event JSON file."
+    required: true
+  fail_on_warn:
+    description: "Treat warnings as workflow failures."
+    required: false
+    default: "false"
+outputs:
+  decision:
+    description: "Final decision: allow, warn, or block."
+  summary:
+    description: "Human-readable summary of matched rules."
+  matched-rule-ids:
+    description: "Comma-separated list of matched rule ids."
+  result-json:
+    description: "Full JSON evaluation result."
+runs:
+  using: "node20"
+  main: "dist/action/index.cjs"
+branding:
+  icon: "shield"
+  color: "orange"

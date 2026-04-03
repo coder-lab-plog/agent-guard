@@ -1,0 +1,68 @@
+rules:
+  - id: block-dangerous-shell
+    description: Prevent obviously destructive shell commands from being executed.
+    appliesTo:
+      - tool_call
+    action: block
+    priority: 100
+    message: Dangerous shell command detected. Require an explicit human review before running it.
+    match:
+      all:
+        - field: toolName
+          operator: equals
+          value: bash
+          ignoreCase: true
+        - field: command
+          operator: regex
+          value: "(rm\\s+-rf\\s+/|curl\\s+.*\\|\\s*(sh|bash)|sudo\\s+rm\\s+-rf|mkfs\\.|dd\\s+if=)"
+
+  - id: warn-sensitive-files
+    description: Flag edits that touch common secret-bearing files.
+    appliesTo:
+      - file_write
+    action: warn
+    priority: 80
+    message: This edit touches a sensitive file path. Double-check that secrets are not being added or changed.
+    match:
+      any:
+        - field: filePath
+          operator: regex
+          value: "(^|/)(\\.env(\\..*)?|secrets?\\.|credentials?|id_rsa)"
+          ignoreCase: true
+        - field: content
+          operator: regex
+          value: "(API_KEY|SECRET_KEY|PRIVATE KEY|TOKEN=)"
+          ignoreCase: true
+
+  - id: block-unapproved-mcp-prod
+    description: Prevent production MCP tools from being invoked without an approved tag.
+    appliesTo:
+      - mcp_call
+    action: block
+    priority: 90
+    message: Production MCP access requires an explicit approved tag in the event payload.
+    match:
+      all:
+        - field: mcpServer
+          operator: contains
+          value: prod
+          ignoreCase: true
+        - field: tags
+          operator: not_contains
+          value: approved
+          ignoreCase: true
+
+  - id: warn-large-generated-patch
+    description: Warn when a single generated patch is unusually large.
+    appliesTo:
+      - file_write
+    action: warn
+    priority: 60
+    message: Large generated file changes deserve a manual review before commit.
+    match:
+      all:
+        - field: metadata.changedLines
+          operator: exists
+        - field: metadata.changedLines
+          operator: regex
+          value: "^[5-9][0-9]{2,}|^[1-9][0-9]{3,}$"

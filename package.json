@@ -1,0 +1,59 @@
+{
+  "name": "agent-guard-cli",
+  "version": "0.1.0",
+  "description": "Programmable guardrails for coding agents across Claude Code, Codex, Cursor, and CI workflows.",
+  "type": "module",
+  "bin": {
+    "agent-guard": "./dist/src/cli/main.js"
+  },
+  "files": [
+    "dist/src",
+    "dist/action",
+    "presets",
+    "action.yml",
+    "adapters",
+    "assets",
+    ".github/topics.txt",
+    "demo/README.md",
+    "demo/demo.tape",
+    "demo/run-demo.sh",
+    "LAUNCH.md",
+    "site",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:ts && npm run build:action",
+    "build:action": "esbuild src/github-action/run.ts --bundle --platform=node --target=node20 --format=cjs --outfile=dist/action/index.cjs --banner:js='/* agent-guard GitHub Action bundle */'",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "dev": "tsx src/cli/main.ts",
+    "demo:prepare": "node scripts/prepare-demo.mjs",
+    "demo:run": "bash demo/run-demo.sh",
+    "test": "npm run build && node --test dist/test/**/*.test.js",
+    "validate:examples": "npm run build && node dist/src/cli/main.js validate --rules presets/baseline.yml",
+    "site:serve": "python3 -m http.server 4173 --directory site"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "guardrails",
+    "claude-code",
+    "codex",
+    "cursor",
+    "mcp",
+    "security"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.0",
+    "esbuild": "^0.25.9",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

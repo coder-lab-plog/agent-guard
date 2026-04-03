@@ -1,0 +1,11 @@
+{
+  "type": "tool_call",
+  "agent": "default",
+  "tool": {
+    "name": "bash",
+    "command": "rm -rf /tmp/workdir"
+  },
+  "tags": [
+    "manual-review"
+  ]
+}

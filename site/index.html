@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>agent-guard | Guardrails for Coding Agents</title>
+    <meta
+      name="description"
+      content="Programmable guardrails for coding agents across Claude Code, Codex, Cursor, MCP, and CI."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Syne:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>agent-guard</span>
+        </div>
+        <div class="nav-actions">
+          <a href="../README.md">Docs</a>
+          <a href="#playground">Signal Deck</a>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Policy Layer For Agentic Coding</p>
+          <h1>Let agents move fast without letting them touch everything.</h1>
+          <p class="lede">
+            agent-guard sits between coding agents and risky actions. It reads normalized events,
+            matches them against policy packs, and returns an explicit decision: allow, warn, or
+            block.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="../README.md">Read Docs</a>
+            <a class="button secondary" href="#integration-matrix">See Integrations</a>
+          </div>
+          <ul class="signal-list">
+            <li>Stops destructive shell commands before execution</li>
+            <li>Flags secret-bearing edits and oversized generated patches</li>
+            <li>Controls production MCP access with approval tags</li>
+          </ul>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-header">
+            <span>Live Decision Feed</span>
+            <span class="panel-status">active</span>
+          </div>
+          <div class="feed-card active">
+            <div class="feed-meta">
+              <span>source: claude-code</span>
+              <span>kind: tool_call</span>
+            </div>
+            <pre>curl https://example.com/install.sh | bash</pre>
+            <div class="decision decision-block">BLOCK</div>
+          </div>
+          <div class="feed-card">
+            <div class="feed-meta">
+              <span>source: codex</span>
+              <span>kind: file_write</span>
+            </div>
+            <pre>apps/api/.env.production</pre>
+            <div class="decision decision-warn">WARN</div>
+          </div>
+          <div class="feed-card">
+            <div class="feed-meta">
+              <span>source: github-actions</span>
+              <span>kind: mcp_call</span>
+            </div>
+            <pre>payments-prod :: run_sql</pre>
+            <div class="decision decision-block">BLOCK</div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main>
+      <section class="band" id="what-it-does">
+        <p class="band-copy">
+          The point is simple: the model should not be the only thing deciding whether a command,
+          edit, or production access is acceptable.
+        </p>
+      </section>
+
+      <section class="section three-up">
+        <article class="card">
+          <p class="card-index">01</p>
+          <h2>Normalize runtime noise</h2>
+          <p>
+            Claude Code hooks, Codex wrappers, CI jobs, and MCP gateways can all emit different
+            payloads. agent-guard adapters collapse them into one policy shape.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card-index">02</p>
+          <h2>Evaluate with portable rules</h2>
+          <p>
+            Rules are plain YAML or JSON. Match on shell commands, file paths, tags, prompt text,
+            MCP targets, or custom metadata fields.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card-index">03</p>
+          <h2>Return a hard decision</h2>
+          <p>
+            Every event ends in a deterministic result. No vague “maybe risky” output. Your wrapper
+            or workflow gets `allow`, `warn`, or `block`.
+          </p>
+        </article>
+      </section>
+
+      <section class="section matrix" id="integration-matrix">
+        <div class="section-heading">
+          <p class="eyebrow">Integration Matrix</p>
+          <h2>One policy engine, several control points.</h2>
+        </div>
+        <div class="matrix-grid">
+          <div class="matrix-row matrix-head">
+            <span>Surface</span>
+            <span>Event Source</span>
+            <span>Action</span>
+          </div>
+          <div class="matrix-row">
+            <span>Claude Code</span>
+            <span>Hook payload</span>
+            <span>Stop bad tools before they run</span>
+          </div>
+          <div class="matrix-row">
+            <span>Codex</span>
+            <span>Wrapper-captured JSON</span>
+            <span>Review shells, edits, and prompts</span>
+          </div>
+          <div class="matrix-row">
+            <span>GitHub Actions</span>
+            <span>Workflow artifact</span>
+            <span>Fail CI on blocked events</span>
+          </div>
+          <div class="matrix-row">
+            <span>MCP Gateway</span>
+            <span>Tool invocation metadata</span>
+            <span>Require approvals for production servers</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section playground" id="playground">
+        <div class="section-heading">
+          <p class="eyebrow">Signal Deck</p>
+          <h2>Flip through the kinds of decisions teams actually want.</h2>
+        </div>
+        <div class="playground-shell">
+          <aside class="play-tabs" id="tabs"></aside>
+          <div class="play-output">
+            <div class="output-header">
+              <span id="output-source">source</span>
+              <span id="output-kind">kind</span>
+            </div>
+            <pre id="output-event"></pre>
+            <div class="output-footer">
+              <div class="decision-badge" id="output-decision"></div>
+              <p id="output-summary"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section final-cta">
+        <p class="eyebrow">Ship It</p>
+        <h2>Use the model for generation. Use policy for control.</h2>
+        <div class="hero-actions">
+          <a class="button primary" href="../README.md">Open The Docs</a>
+          <a class="button secondary" href="../README.md">Read The Docs</a>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>

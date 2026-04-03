@@ -1,0 +1,9 @@
+{
+  "kind": "file_write",
+  "source": "codex",
+  "filePath": ".env.production",
+  "content": "OPENAI_API_KEY=sk-demo",
+  "metadata": {
+    "changedLines": 12
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "file_write",
+  "source": "cursor",
+  "filePath": "apps/api/.env.local",
+  "content": "DATABASE_URL=postgres://demo",
+  "metadata": {
+    "changedLines": 18
+  }
+}

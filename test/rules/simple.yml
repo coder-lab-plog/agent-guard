@@ -1,0 +1,14 @@
+rules:
+  - id: warn-debug-print
+    appliesTo:
+      - file_write
+    action: warn
+    message: Debug statements should be removed before commit.
+    match:
+      any:
+        - field: content
+          operator: contains
+          value: console.log
+        - field: content
+          operator: contains
+          value: debugger
